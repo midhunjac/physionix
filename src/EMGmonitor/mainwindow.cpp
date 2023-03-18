@@ -1,7 +1,8 @@
 #include "mainwindow.h"
 #include <QPixmap>
-
-
+#include "mainwindow.h"
+#include <stdint.h>
+#include <cmath>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent){
@@ -71,6 +72,21 @@ void MainWindow::init_UI()
 
     setCentralWidget(window);
 
+    connect(but_monitor, &QPushButton::clicked,
+            this, [this](){this->but_monitor_clicked();});
+    connect(but_viewdemo, &QPushButton::clicked,
+            this, [this](){this->but_viewdemo_clicked();});
+
 
 }
 
+void MainWindow::but_monitor_clicked()
+{
+     monitorWindow = new MonitorWindow();
+     monitorWindow->show();
+
+}
+void MainWindow::but_viewdemo_clicked()
+{
+
+}

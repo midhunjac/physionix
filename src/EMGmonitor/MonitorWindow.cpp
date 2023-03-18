@@ -9,9 +9,42 @@ MainWindow::MainWindow(QWidget* parent) :
 	mTag2(0)
 {
 	ui->setupUi(this);
+	ui->setupUi(this);
 
-	mPlot = new QCustomPlot(this);
-	setCentralWidget(mPlot);
+	but_stop = new QPushButton("Stop", this);
+	but_close = new QPushButton("Close", this);
+
+
+	plot_widget = new QWidget();
+	mPlot = new QCustomPlot(plot_widget);
+
+	QHBoxLayout* plot_layout = new QHBoxLayout();
+
+	plot_layout->addWidget(mPlot);
+	plot_layout->addStretch(1);
+
+	//plot_widget->setFixedSize(QSize(this->width(),this->height()));
+	QHBoxLayout* grid_layout = new QHBoxLayout;
+	grid_layout->addStretch(1);
+	grid_layout->addWidget(but_close);
+	grid_layout->addWidget(but_stop);
+	grid_layout->addStretch(1);
+
+	QVBoxLayout* la = new QVBoxLayout;
+	la->addLayout(plot_layout);
+	la->addLayout(grid_layout);
+
+
+	QWidget* another = new  QWidget();
+	another->setLayout(la);
+
+	setCentralWidget(another);
+
+
+
+
+	//setCentralWidget(mPlot);
+	
 
 	
 	mPlot->yAxis->setTickLabels(false);

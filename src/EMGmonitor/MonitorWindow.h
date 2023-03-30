@@ -19,7 +19,9 @@ public:
 
 
 private slots:
-  //for future
+  void timerSlot();
+  void _but_export_clicked();
+  void _but_freeze_clicked();
 
 private:
    QPushButton *_but_freeze, *_but_resume, *_but_export;
